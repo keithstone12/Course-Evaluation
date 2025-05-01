@@ -1,0 +1,47 @@
+body {
+  font-family: sans-serif;
+  padding: 1rem;
+  background: #f4f4f4;
+}
+h1, h2 {
+  text-align: center;
+}
+.question {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+}
+.rating {
+  display: flex;
+  justify-content: space-around;
+}
+.rating input[type="radio"] {
+  display: none;
+}
+.rating label {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+}
+.rating input[type="radio"]:checked + label {
+  background: #007bff;
+  color: white;
+}
+#totalScore {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
