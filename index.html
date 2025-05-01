@@ -1,168 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ffffff" />
-  <title>Instructor and Course Evaluation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 2rem;
-    }
-    h1, h2 {
-      text-align: center;
-      color: #343a40;
-    }
-    form {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .section {
-      margin-bottom: 2rem;
-    }
-    .question {
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
-    }
-    select, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-top: 0.25rem;
-    }
-    button {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    #averageScore {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <link rel="manifest" href="manifest.json">
+  <title>Course and Instructor Evaluation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Instructor and Course Evaluation</h1>
+  <h1>Course and Instructor Evaluation</h1>
   <form id="evaluationForm">
-    <div class="section">
+    <section>
       <h2>Instructor Evaluation</h2>
-      <div class="question">
-        <label for="q1">1. Knowledge of subject matter</label>
-        <select id="q1">
+      <label>Knowledge of subject matter:
+        <select name="q1">
           <option value="">Select</option>
-          <option value="1">1 - Unsatisfactory</option>
-          <option value="2">2 - Poor</option>
-          <option value="3">3 - Satisfactory</option>
-          <option value="4">4 - Good</option>
-          <option value="5">5 - Excellent</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
-      </div>
-      <div class="question">
-        <label for="q2">2. Clarity of instruction and communication</label>
-        <select id="q2">
+      </label>
+      <label>Clarity of instruction and communication:
+        <select name="q2">
           <option value="">Select</option>
-          <option value="1">1 - Unsatisfactory</option>
-          <option value="2">2 - Poor</option>
-          <option value="3">3 - Satisfactory</option>
-          <option value="4">4 - Good</option>
-          <option value="5">5 - Excellent</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
-      </div>
-    </div>
-
-    <div class="section">
+      </label>
+    </section>
+    <section>
       <h2>Course Evaluation</h2>
-      <div class="question">
-        <label for="q3">1. Relevance of course content to job skills</label>
-        <select id="q3">
+      <label>Relevance of course content to job skills:
+        <select name="q3">
           <option value="">Select</option>
-          <option value="1">1 - Unsatisfactory</option>
-          <option value="2">2 - Poor</option>
-          <option value="3">3 - Satisfactory</option>
-          <option value="4">4 - Good</option>
-          <option value="5">5 - Excellent</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
-      </div>
-      <div class="question">
-        <label for="q4">2. Clarity of course objectives</label>
-        <select id="q4">
+      </label>
+      <label>Clarity of course objectives:
+        <select name="q4">
           <option value="">Select</option>
-          <option value="1">1 - Unsatisfactory</option>
-          <option value="2">2 - Poor</option>
-          <option value="3">3 - Satisfactory</option>
-          <option value="4">4 - Good</option>
-          <option value="5">5 - Excellent</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Additional Comments</h2>
-      <textarea id="comments" rows="5" placeholder="Enter any additional feedback here..."></textarea>
-    </div>
-
-    <div id="averageScore">Average Score: --</div>
+      </label>
+    </section>
+    <label>Additional Comments:
+      <textarea name="comments" rows="5"></textarea>
+    </label>
+    <p id="averageScore">Average Score: --</p>
     <button type="submit">Submit Evaluation</button>
   </form>
-
+  <script src="script.js"></script>
   <script>
-    document.getElementById('evaluationForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const fields = ['q1', 'q2', 'q3', 'q4'];
-      let total = 0;
-      let count = 0;
-      const responses = {};
-
-      fields.forEach(id => {
-        const value = parseInt(document.getElementById(id).value);
-        if (!isNaN(value)) {
-          total += value;
-          count++;
-          responses[id] = value;
-        }
-      });
-
-      const avg = count > 0 ? (total / count).toFixed(2) : '--';
-      document.getElementById('averageScore').textContent = `Average Score: ${avg}`;
-
-      const comments = document.getElementById('comments').value;
-      const subject = encodeURIComponent('Course Evaluation Form');
-      const body = encodeURIComponent(
-        `Instructor Evaluation:\n` +
-        `1. Knowledge: ${responses.q1 || 'N/A'}\n` +
-        `2. Clarity: ${responses.q2 || 'N/A'}\n\n` +
-        `Course Evaluation:\n` +
-        `1. Relevance: ${responses.q3 || 'N/A'}\n` +
-        `2. Objectives: ${responses.q4 || 'N/A'}\n\n` +
-        `Average Score: ${avg}\n\nComments:\n${comments}`
-      );
-
-      window.location.href = `mailto:stooley@ccf-r.com?subject=${subject}&body=${body}`;
-    });
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
   </script>
 </body>
 </html>
